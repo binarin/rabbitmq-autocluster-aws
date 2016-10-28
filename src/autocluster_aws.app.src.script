@@ -1,6 +1,9 @@
 {application, autocluster_aws,
  [{description, "Autocluster pluging bundled with AWS dependencies"},
-  {vsn, ""},
+  {vsn, begin
+            {ok, {_, _, Props}} = file:consult("src/autocluster.app.src"),
+            proplists:get_value(vsn, Props, "0.0.0")
+        end},
   {modules, []},
   {registered, []},
   {env, []},
